@@ -1,12 +1,15 @@
 <div class="contenedor crear">
-	<h1 class="uptask">Up Task</h1>
-	<p class="tagline">Crea y Administra tus Proyectos</p>
-
+	<?php
+	@include_once __DIR__ . '/../templates/nombre-sitio.php';	
+	?>
 
 	<div class="contenedor-sm">
-		<p class="descripcion-pagina">Inicia Sesión con tus Datos</p>
-
+		<p class="descripcion-pagina">Crea tu Cuenta en Up Task</p>
 			<form method="POST" class="formulario" action="/">
+				<div class="campo">
+					<label for="nombre">Nombre</label>
+					<input type="text" id="nombre" name="nombre" placeholder="Tu Nombre" required>
+				</div>
 				<div class="campo">
 					<label for="email">Email</label>
 					<input type="email" id="email" name="email" placeholder="Tu Email" required>
@@ -16,11 +19,16 @@
 					<label for="password">Password</label>
 					<input type="password" id="password" name="password" placeholder="Tu Password" required>
 				</div>
+				
+				<div class="campo">
+					<label for="password2">Password</label>
+					<input type="password" id="password2" name="password2" placeholder="Repetir Password" required>
+				</div>
 
 				<input type="submit" class="boton" value="Iniciar Sesión">  
 			</form>
 			<div class="acciones">
-				<a href="/crear-cuenta">¿Aún no tienes una cuenta? Crear una</a>	
+				<a href="/">¿Ya tienes cuenta? Inciar Sessión</a>	
 				<a href="/olvide-password">¿Olvidaste tu Password?</a>
 			</div>
 
