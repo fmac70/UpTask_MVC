@@ -1,0 +1,38 @@
+@use 'base/variables' as v;
+@use 'base/mixins' as m;
+@use "sass:color";
+
+.login {
+	margin-top: 2rem;
+	.uptask {
+		
+		//background:linear-gradient(to right, v.$cyan 0%, lighten(v.$cyan, 30%) 100%);
+		background: linear-gradient(
+ 			to right,
+			v.$cyan 0%,
+			color.scale(v.$cyan, $lightness: 30%) 100%
+			);
+		text-align: center;
+		color: transparent;
+		background-clip: text;
+		font-size: 3rem;
+		@include m.tablet {
+			font-size: 7rem;
+		}
+	}
+
+	input[type="submit"] {
+		@include m.boton(v.$cyan, v.$blanco);
+	}
+
+	.acciones {
+		a{
+			color: v.$cyan;
+		}
+	}
+
+	.tagline
+	{
+		font-size: 2rem;
+	}
+}

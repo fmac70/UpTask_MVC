@@ -4,7 +4,7 @@
 
 
 .formulario {
-    margin-top: 5rem;
+    margin-top: 4rem;
     //background-color:v.$gris-oscuro;
     //padding: 2rem;
     //border-radius: 1rem;
@@ -32,14 +32,14 @@
 
         
         input, textarea {
-            flex: 0.5;
+            flex: 1;
             //width: 100%;
             padding: 1rem;
             //padding: 1rem;
             //border-radius: .5rem;
             border: none;
            // background-color: lighten(v.$gris , 40% );
-            background-color: color.scale(v.$gris, $lightness: 40%);
+            background-color: color.scale(v.$gris, $lightness: 70%);
             //font-size: 1rem;
 
             &:focus {
@@ -49,18 +49,4 @@
         }
     }
 
-   /* 
-    .submit {
-        background-color:v.$primary;
-        color:v.$blanco;
-        padding: 1rem 2rem;
-        border-radius: .5rem;
-        border: none;
-        font-size: 1rem;
-        cursor: pointer;
-
-        &:hover {
-            background-color: m.darken(v.$primary, 10%);
-        }
-    }*/
 }
