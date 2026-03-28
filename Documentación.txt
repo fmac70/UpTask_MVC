@@ -1,0 +1,25 @@
+1.-	Despues de Descromprimir el Zip y tener la base hay que empezar a instalar dependencias
+2.-	DEPENDENCIAS.
+	2.1	ejecutamos en la consola el comando "npm i" para que se instale las dependiciasdel packgage.json.
+		
+		"gulp": "^5.0.0",
+    	"gulp-sass": "^5.1.0",
+    	"gulp-terser": "^2.1.0",
+    	"sass": "^1.75.0"
+
+		 Con ello conseguimos que se cree la carpeta node_modules con las dependencias para la compilación
+
+	2.2	ejecutamos en la consola el comando "composer update"
+		Creará la carpeta vendor con el autoload. Si hubise dependiencias externas tendriamos que ejecutar "composer install"
+		En el fichero /include/app.php ya está incluido el autoload.
+
+	2.3.-	GULP   
+		Ejecutamos desde el package.json el defult del gulpile con el comando.
+		npm run dev. Con ello creamos en public/build
+
+	2.4.- Configuramos el accesos a bbdd con los datos de usuario, pass, nombre bdd, tec.
+
+3.-	EMPEZAMOS A CONSTRUIR LA APP.
+
+	3.1 Login.
+	Cramos el controlador: LoginController.php
