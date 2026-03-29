@@ -3,24 +3,10 @@
 @use "sass:color";
 
 .login {
-	margin-top: 2rem;
+	margin-top: 5rem;
 	.uptask {
-		
-		//background:linear-gradient(to right, v.$cyan 0%, lighten(v.$cyan, 30%) 100%);
-		background: linear-gradient(
- 			to right,
-			v.$cyan 0%,
-			color.scale(v.$cyan, $lightness: 30%) 100%
-			);
-		text-align: center;
-		color: transparent;
-		background-clip: text;
-		font-size: 3rem;
-		@include m.tablet {
-			font-size: 7rem;
-		}
+		 @include m.textoDegradado(v.$cyan);
 	}
-
 	input[type="submit"] {
 		@include m.boton(v.$cyan, v.$blanco);
 	}
