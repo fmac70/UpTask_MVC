@@ -1,7 +1,8 @@
 <?php
 
 namespace  Controllers;
-use MVC\Router;	
+use MVC\Router;
+use Models\Usuario;	
 
 class LoginController {
 	public static function login(Router $router)
@@ -30,25 +31,52 @@ class LoginController {
 
 	public static function crear(Router $router)
 	{
-
+		$alertas = [];
+		$usuario = new Usuario();
 		// Display account creation form
 		if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-			// Handle account creation logic
-			//self::createAccount();
-		} else {
-			// Show account creation form
-			//include_once __DIR__ . '/../views/crear-cuenta.php';
-		}
+			$usuario->sincronizar($_POST);
+			$alertas = $usuario->validarNuevaCuenta();
 
+			if(empty($alertas)) {
+				// Verificar que el usuario no esté registrado
+				$existeUsuario = Usuario::where('email', $usuario->email);
+				if($existeUsuario) {
+					Usuario::setAlerta('error', 'El Usuario ya está registrado');
+					$alertas = Usuario::getAlertas();
+				} else {
+					// Hashear el password
+					$usuario->hashPassword();
+
+					// Generar un token único
+					$usuario->crearToken();
+
+					// Crear el usuario
+					$resultado = $usuario->guardar();
+					if($resultado) {
+						// Enviar email de confirmación
+						//Email::enviarConfirmacion($usuario->email, $usuario->nombre, $usuario->token);
+
+						// Redireccionar al usuario
+						header('Location: /mensaje');
+					}
+				}
+			}
+
+			
+		}
+		
 		$router->render('auth/crear', [
-			'titulo' => 'Crear Cuenta'
+			'titulo'	=> 'Crear Cuenta',
+			'usuario'	=> $usuario,
+			'alertas'	=> $alertas,
 		]);	
 
 	}
 
-	public static function recuperar()
+	public static function recuperar(Router $router)
 	{
-		echo ("Desde recuperar password");
+		
 		// Display password recovery form
 		if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 			// Handle password recovery logic
@@ -57,11 +85,15 @@ class LoginController {
 			// Show password recovery form
 			//include_once __DIR__ . '/../views/recuperar-password.php';
 		}
+
+		$router->render('auth/recuperar', [
+			'titulo' => 'Recuperar Password'
+		]);	
 	}
 
-	public static function olvide()
+	public static function olvide(Router $router)
 	{
-		echo ("Desde olvide password");
+		
 		// Display forgot password form
 		if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 			// Handle forgot password logic
@@ -70,18 +102,25 @@ class LoginController {
 			// Show forgot password form
 			//include_once __DIR__ . '/../views/olvide-password.php';
 		}
+
+		$router->render('auth/olvide', [
+			'titulo' => 'Olvidé mi Password'
+		]);
+
+
 	}	
 
-	public static function mensaje()
+	public static function mensaje(Router $router)
 	{
-		echo ("Desde mensaje");
-		// Display account confirmation message
-		//include_once __DIR__ . '/../views/mensaje.php';
+		$router->render('auth/mensaje', [
+			'titulo' => 'Mensaje'
+		]);
 	}
 
-	public static function confirmar()
+	public static function confirmar(Router $router)
 	{
-		echo ("Desde confirmar cuenta");
-		// Handle account confirmation logic
+		$router->render('auth/confirmar', [
+			'titulo' => 'Confirmar Cuenta'
+		]);
 	}	
 }
