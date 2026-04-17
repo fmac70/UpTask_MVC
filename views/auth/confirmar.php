@@ -4,7 +4,11 @@
 	?>
 
 	<div class="contenedor-sm">
-		<p class="descripcion-pagina">Tu cuenta ha sido confirmada correctamente</p>
+
+		<?php
+			@include_once __DIR__ . '/../templates/alertas.php';	
+		?>
+		
 		<div class="acciones">
 			<a href="/">Iniciar Sesión</a>
 		</div>
