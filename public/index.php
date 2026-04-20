@@ -23,8 +23,8 @@ $router->get	('/olvide-password',	[Controllers\LoginController::class, 'olvide']
 $router->post	('/olvide-password',	[Controllers\LoginController::class, 'olvide']);
 
 //	Recuperar Password
-$router->get	('/recuperar-password',	[Controllers\LoginController::class, 'recuperar']);
-$router->post	('/recuperar-password',	[Controllers\LoginController::class, 'recuperar']);
+$router->get	('/restablecer',	[Controllers\LoginController::class, 'recuperar']);
+$router->post	('/restablecer',	[Controllers\LoginController::class, 'recuperar']);
 
 //	Panel de Administración
 $router->get	('/admin',	[Controllers\AdminController::class, 'index']);

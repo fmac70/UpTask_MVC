@@ -18,6 +18,34 @@ class Email
 		$this->token = $token;
 	}
 
+	public function enviarInstrucciones()
+	{
+		// Implementar lógica para enviar email de instrucciones para restablecer contraseña
+		$mail = new PHPMailer();
+		$mail->isSMTP();
+		$mail->Host = 'sandbox.smtp.mailtrap.io';
+		$mail->SMTPAuth = true;
+		$mail->Port = 2525;
+		$mail->Username = '54f83bbb4e7628';
+		$mail->Password = '2e55d064582615';
+
+		$mail->setFrom('fmac70@gmail.com', 'UpTask - Administrador de Proyectos');
+		$mail->addAddress($this->email, $this->nombre);
+		$mail->Subject = 'Restablece tu password en UpTask';
+		$mail->isHTML(true);
+		$mail->charSet = 'UTF-8';
+		
+		$contenido = '<html>';
+		$contenido .= '<p><strong>Hola ' . $this->nombre . '</strong>,</p>';
+		$contenido .= '<p>Parece que has olividado tu password, sigue el siguiente enlace para restablecerlo:</p>';
+		$contenido .= '<p><a href="http://localhost:3000/restablecer?token=' . $this->token . '">Restablecer Password</a></p>';
+		$contenido .= '<p>Si no te registraste en UpTask, puedes ignorar este mensaje.</p>';
+		$contenido .= '<p>Saludos,<br>El equipo de UpTask</p>';
+		$contenido .= '</html>';	
+
+		$mail->Body = $contenido;
+		$mail->send();
+	}
 	public function enviarConfirmacion()
 	{
 		// Implementar lógica para enviar email de confirmación
@@ -57,5 +85,7 @@ class Email
 		*/
 		// Aquí deberías implementar la lógica para enviar el email usando la librería que elijas
 	}
+
+	
 }
 

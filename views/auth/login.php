@@ -5,6 +5,7 @@
 
 	<div class="contenedor-sm">
 		<p class="descripcion-pagina">Inicia Sesión con tus Datos</p>
+			<?php @include_once __DIR__ . '/../templates/alertas.php';	?>
 
 			<form method="POST" class="formulario" action="/">
 				<div class="campo">

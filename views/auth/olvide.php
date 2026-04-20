@@ -5,6 +5,9 @@
 
 	<div class="contenedor-sm">
 		<p class="descripcion-pagina">Recupera tu Acceso a Up Task</p>
+
+		<?php @include_once __DIR__ . '/../templates/alertas.php';	?>
+
 			<form method="POST" class="formulario" action="/olvide-password">
 				<div class="campo">
 					<label for="email">Email</label>
