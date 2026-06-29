@@ -3,6 +3,9 @@
 require_once __DIR__ . '/../includes/app.php';
 
 use MVC\Router;
+use Controllers\LoginController;
+use Controllers\DashboardController;
+use Controllers\AdminController;
 $router = new Router();
 
 //	Login
@@ -29,5 +32,20 @@ $router->post	('/restablecer',	[Controllers\LoginController::class, 'recuperar']
 //	Panel de Administración
 $router->get	('/admin',	[Controllers\AdminController::class, 'index']);
 
+//    Zona de proyectos
+$router->get	('/dashboard',	        [Controllers\DashboardController::class, 'index']);
+$router->get	 ('/crear-proyecto',	[Controllers\DashboardController::class, 'crear_proyecto']);
+$router->post	 ('/crear-proyecto',	[Controllers\DashboardController::class, 'crear_proyecto']);
+$router->get	 ('/proyecto',	        [Controllers\DashboardController::class, 'proyecto']);
+$router->get	 ('/perfil',	        [Controllers\DashboardController::class, 'perfil']);
+$router->post	 ('/perfil',	        [Controllers\DashboardController::class, 'perfil']);
+
 // Comprueba y valida las rutas, que existan y les asigna las funciones del Controlador
 $router->comprobarRutas();
+
+
+
+//$router->get	('/dashboard',	[Controllers\DashboardController::class, 'index']);
+//$router->get	 ('/crear-proyecto',	[Controllers\DashboardController::class
+
+

@@ -12,13 +12,13 @@ class LoginController {
 		// Display login form
 		if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 			// Handle login authentication
-				$auth = new Usuario($_POST);
-				$alertas = $auth->validarLogin();
+				$usuario = new Usuario($_POST);
+				$alertas = $usuario->validarLogin();
 				if(empty($alertas)) {
-					$usuario = Usuario::where('email', $auth->email);
+					$usuario = Usuario::where('email', $usuario->email);
 					if($usuario) {
 						if($usuario->confirmado === "1") {
-							if(password_verify($auth->password, $usuario->password)) {
+							if(password_verify($_POST['password'], $usuario->password)) {
 								// Iniciar sesión
 								session_start();
 								$_SESSION['id'] = $usuario->id;
@@ -26,7 +26,7 @@ class LoginController {
 								$_SESSION['email'] = $usuario->email;
 								$_SESSION['login'] = true;
 
-								header('Location: /admin');
+								header('Location: /dashboard');
 							} else {
 								Usuario::setAlerta('error', 'Password Incorrecto');
 							}
@@ -42,7 +42,7 @@ class LoginController {
 			// Show login form
 			//include_once __DIR__ . '/../views/login.php';
 		}
-
+		$alertas = Usuario::getAlertas();
 		$router->render('auth/login', [
 			'titulo' => 'Iniciar Sesión',
 			'alertas' => $alertas
@@ -52,8 +52,12 @@ class LoginController {
 
 	public static function logout()
 	{
-		echo ("Desde logoutcontroller");
+		//echo ("Desde logoutcontroller");
 		// Handle logout logic
+		session_start();
+		$_SESSION = [];
+		header('Location: /');
+
 	}
 
 	public static function crear(Router $router)

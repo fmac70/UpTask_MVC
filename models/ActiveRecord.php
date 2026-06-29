@@ -66,6 +66,14 @@ class ActiveRecord {
         $query = "SELECT * FROM " . static::$tabla . " WHERE ${columna} = '${valor}'";
         $resultado = self::consultarSQL($query);
         return array_shift( $resultado ) ;
+       // return $resultado;
+    }
+
+    // Busqueda todos los registristros que pertenezcan a un usuario por su ID
+    public static function belongsTo($columna, $valor) {
+        $query = "SELECT * FROM " . static::$tabla . " WHERE ${columna} = '${valor}'";
+        $resultado = self::consultarSQL($query);
+        return $resultado;
     }
 
     // SQL para Consultas Avanzadas.

@@ -1,0 +1,6 @@
+"id";"nombre";"email";"password";"token";"confirmado"
+3;" Fernando";"fmac70@gmail.com";"$2y$10$0GdzYVd6JYrbWmRi0P.yRuP.63hgte7IPBWFpIIil.IS0n9nWrexe";"";1
+7;" Responasable";"correo@correo.com";"$2y$10$Ii1IpdHKvakGMBHEvYsiaOPEuXHvrnwvEHkmDd7hxutT7QjNtpvFO";"";1
+8;" Tecnico 1";"correo1@correo.com";"$2y$10$Jny9qOSd.j5G0QhU4n9uq.ZgBtT/aP0UR0mbVdLfeNbQ2WOhrKwUe";"";1
+9;" Tecnico 2";"correo2@correo.com";"$2y$10$66D8KwWAxK2IYbBOec3DbePpFRQxPmo.7BZl0UThEZhEQtg4ADC5S";"";1
+10;" Tecnico 3";"correo3@correo.com";"$2y$10$Y9Qf5lbmVHbReV/qfjORTOUrkw8tUu7wnFjX9LlJcXn6/Dp5x9Cde";"";1
